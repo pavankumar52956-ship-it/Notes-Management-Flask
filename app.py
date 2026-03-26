@@ -7,10 +7,11 @@ app.secret_key = "myverysecretkey"
 
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",       
-        password="Pavan@2010", # UPDATE THIS TO YOUR PASSWORD
-        database="notesdb"
+        host="mysql-361f04f7-pavankumar52956-2a79.j.aivencloud.com",
+        user="avnadmin",
+        password="AVNS_b2T8mQ1plf_RTGQ88ga", # Get this from the 'eye' icon in Aiven
+        port=27402,
+        database="defaultdb"
     )
 
 @app.route('/')
