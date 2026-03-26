@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Home - Notes Management System{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
+  <div class="container-fluid py-5 text-center">
+    <h1 class="display-5 fw-bold text-primary">📝 Notes Management System</h1>
+    <p class="col-md-12 fs-5 text-muted">
+      A secure, full-stack web application developed using the <strong>Flask Framework</strong> and <strong>MySQL Database</strong>. 
+      Organize your thoughts, tasks, and ideas in a private, encrypted workspace.
+    </p>
+    <hr class="my-4">
+    
+    {% if not session.get('user_id') %}
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg px-4 gap-3">Sign In</a>
+        <a href="{{ url_for('register') }}" class="btn btn-outline-success btn-lg px-4">Create Account</a>
+      </div>
+    {% else %}
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="{{ url_for('viewall') }}" class="btn btn-primary btn-lg px-4">Go to My Notes</a>
+        <a href="{{ url_for('addnote') }}" class="btn btn-success btn-lg px-4">Add New Note</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+  <div class="feature col text-center">
+    <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+      🔐
+    </div>
+    <h3 class="fs-4">Secure Authentication</h3>
+    <p>Utilizes Flask Sessions and Werkzeug password hashing to ensure your data remains private and protected.</p>
+  </div>
+  <div class="feature col text-center">
+    <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+      📂
+    </div>
+    <h3 class="fs-4">Full CRUD Operations</h3>
+    <p>Easily Create, Read, Update, and Delete your notes through a seamless user interface.</p>
+  </div>
+  <div class="feature col text-center">
+    <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+      🗄️
+    </div>
+    <h3 class="fs-4">MySQL Integration</h3>
+    <p>Powered by a robust MySQL relational database with One-to-Many mapping for efficient data retrieval.</p>
+  </div>
+</div>
+{% endblock %}
